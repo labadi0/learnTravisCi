@@ -6,4 +6,4 @@ script: ./mvnw clean install
 services:
   - mysql
 before_install:
-  - mysql -e 'CREATE DATABASE IF NOT EXISTS bankRest;'
+  - mysql -e 'CREATE DATABASE bankRest;'
