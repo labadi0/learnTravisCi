@@ -3,7 +3,3 @@ jdk:
   - openjdk8
 
 script: ./mvnw clean install
-services:
-  - mysql
-before_install:
-  - mysql -e 'CREATE DATABASE bankRest;'
