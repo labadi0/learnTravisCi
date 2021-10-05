@@ -6,10 +6,12 @@ addons:
   sonarcloud:
     organization: "labadi0"
     token:
-      secure: travis encrypt ae5863c1483f681cf31639a2e9e3fbd527a786b6
+      secure: "travis encrypt ae5863c1483f681cf31639a2e9e3fbd527a786b6" # encrypted value of your token
 
 script:
+  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
   - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=labadi0_learnTravisCi
+
 services:
   - mysql
 before_install:
@@ -22,5 +24,6 @@ notifications:
   email:
     recipients:
       - mouchakess1230@gmail.com
+      - widad.chouef@usmba.ac.ma
     on_success: always
     on_failure: always
