@@ -3,3 +3,16 @@ jdk:
   - openjdk8
 
 script: ./mvnw clean install
+script: ./mvnw clean install
+services:
+  - mysql
+before_install:
+  - chmod +x mvnw  
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS bankRest;'
+notifications:
+  email:
+    recipients:
+      - mouchakess1230@gmail.com
+      - idmbarksoufiane@gmail.com
+    on_success: always
+    on_failure: always
