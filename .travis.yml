@@ -9,9 +9,6 @@ services:
 before_install:
   - chmod +x mvnw  
   - mysql -e 'CREATE DATABASE IF NOT EXISTS bankRest;'
-  - mysql -u root --default-character-set=utf8 baladay < scripts/bd.sql
-  - mysql -e 'SHOW TABLES FROM bankRest;'
-
 notifications:
   email:
     recipients:
