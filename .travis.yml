@@ -6,7 +6,7 @@ addons:
   sonarcloud:
     organization: "labadi0"
     token:
-      secure: "travis encrypt f425fd9a1e1348928b13294db8fdbb0e2809e282" # encrypted value of your token
+      secure: travis encrypt ae5863c1483f681cf31639a2e9e3fbd527a786b6
 
 script:
   - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=labadi0_learnTravisCi
