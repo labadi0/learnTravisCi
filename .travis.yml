@@ -7,10 +7,3 @@ services:
   - mysql
 before_install:
   - mysql -e 'CREATE DATABASE IF NOT EXISTS bankRest;'
-notifications:
-  email:
-    recipients:
-      - mouchakess1230@gmail.com
-      - idmbarksoufiane@gmail.com
-    on_success: always
-    on_failure: always
