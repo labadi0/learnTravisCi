@@ -1,24 +1,20 @@
 language: java
 jdk:
-  - openjdk11
+  - openjdk8
 
-addons:
-  sonarcloud:
-    organization: "labadi0"
-    token:
-      secure: "**************************" # encrypted value of your token
 
-script:
-  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
-  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=labadi0_learnTravisCi
+travis encrypt ae5863c1483f681cf31639a2e9e3fbd527a786b6
+
+
+script: ./mvnw clean install
 
 services:
   - mysql
 before_install:
-  - chmod +x mvnw
+  - chmod +x mvnw  
   - mysql -e 'CREATE DATABASE IF NOT EXISTS bankRest;'
-  # - mysql -u root --default-character-set=utf8 bankRest < scripts/bd.sql
-  # - mysql -e 'SHOW TABLES FROM bankRest;'
+  - mysql -u root --default-character-set=utf8 bankRest < scripts/bd.sql
+  - mysql -e 'SHOW TABLES FROM bankRest;'
 
 notifications:
   email:
