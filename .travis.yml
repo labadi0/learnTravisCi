@@ -6,11 +6,11 @@ addons:
   sonarcloud:
     organization: "labadi0"
     token:
-      secure: "qE3k/rWqxs5yuw+yrpE+eX7EtBnRfJb69mkQ3NK4uZZu5VzzR1g4nlxuXVmJYRQtKgn58Yv0BX+T6MWny3udQMgf8Gb3wLr8tJZT4u0PbuNEYC6Tot1eTNP/Dv4sWs1w7gvBLaYVnWGrVjRy87M/fw/PuUMmx1HZQ54TIBT5b5jtnQqFgeeSSDiCVvBcBZ/nqVWp4o5zKMV/hnaA0ABQvQUoqozKxAXVnrV4sEbFU0GUe6IMB8cppIFBPeumBNexEunHL8ZQyYe+Eu5bhgXbeJtFjV6xty4ymMTIDUBwLV4QJlELJxczEPImV1mwvNVyuF7qCQvjP0GE9HDuihF1AtA7NkgreOKGGGgr/SOt9oAtyAlPpzIazuvhDGoGcb661KS8qQ1BcUFCQrS5sb6h4bEew5W6L6EGTIjolRym5j+gxmppJFsLLYutCfWinfIF7ZPELqgGsva+cZxgyNjxDLCyAgQPIkjLF+IjoNwcWgSaCbqZ1a03gkTeKUvf0O75Q5DFwpzgE8++6cnqWf4PexfNzy5AYKIbU6zIYA8x+JLIvg93hVGID/WCs3oME0jTeJIEPgT/vFaC14HeaXJnhQ6x/5OHFIDmzOTjXiOaphSDJnlP0Vkx21fvD+EQfUxgCWDgWxf5ZwCB51LUcolOWTCLw7ODdnnwh3mmaCaQ+AM=" # encrypted value of your token
+      secure: "cOw7EnhCtmWLNHftpX6RRTdb8C9KjUCPbvOWmLgG8t9E1AdFZDX/yJ4dmg0ivI9cloYVvBGZtpJhACozGNIg1Gm6E+kHOlA3IleS+/+wJJtH44ewgBfZxZ938ndZcrQ1l94/FTTLQYBW+9DZabWW3N+zlVjdMTVho19F1yLp5Qp1EdfLT/ACv3vbpow7ohx016GmTTOKX7MAiVC3jlQcaxHRwVjefKURP/rvemYvdtAOfsisBKthcb6lTAMXNEYNZj7uPwoBcM0obiISBRJ9AJzYJRERKBXXHpIbCsW8Co2f4l1cBJC0sKVNgo8noxsiIyvaxGPxUAQBcOzjETWWcS9g1I/QNAcSx3yvjhVYgq6Y80R8bAQmMvQShQxarqTY5SkAVapJnpiJ3uyvHxbbwHTSV1UNA3rX0V6wAMEOKd/uqgfz8v3csaAC3ZVFGd3x+oMlCLgPGyyJ/aOBUjXko8hUFp1a8h4np8biEh2oWw+IPRb3IwimSGHvuW7125tRfdL5daE2HIw3awQJgE2lTOzksZ6Li4+TJ0nFdBfeBpMzRbgHh3CeOWLmBsaVAeUvdpmuPXtQ84PtFfxNgy8Hc761F7X26VVRgrru7iWUmmRSNjwEz1GTEmekGLAV3uUcSVyV4F6PwOGVeJehCfp/GwBw5S/xsUf8Nv5iQLkDfjA="
 
 script:
-  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
-  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=labadi0_learnTravisCi
+  # JaCoCo is used to have code coverage, "-Pcoverage" activates the maven profile in the pom.xml
+  - mvn clean verify sonar:sonar -Pcoverage
 
 services:
   - mysql
