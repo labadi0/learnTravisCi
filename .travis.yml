@@ -1,2 +1,28 @@
-gem install travis
-travis encrypt --pro SOMEVAR="ae5863c1483f681cf31639a2e9e3fbd527a786b6"
+language: java
+jdk:
+  - openjdk8
+
+addons:
+  sonarcloud:
+    organization: "labadi0"
+    token:
+      secure: "nzGMOYlCEAhsM4EJso6zMVnwviPy5ubT6QQMXV/nUN+QO+KFdQ9tolRBS8xPqU/1kfvYKRQJqrG0lNz6owbTjv3JhcrQYJxVrdO/jEGGNe61v4E1KgNtTBzBDghVLTbRoaSXQ8GtmTPD+nIY2GUtxHxPjGwyTw8fFb0qqM7QsjtSndrqEdcjOQhqjBhDK6LjFTneFMk+NwvTwN3BP5KH49Nv7Z7GWWrdV58S7uT/7uB4iqJjHwzkxsqyvmMNfOmcjh+J0wxtJhGjlNHjjBcGNEccuCzyjnrdb+pQCbgo14tYA561taUebfVI652jNP4l3venyYak8/lTVw1zWCx3WvjGhYCWtcptxmITipZNea1APsQJGP/vFoesqyEHC919szUtNmj39NvCfhZ4HZrO4yIW400L69ewq9hY7m/Yfk8SBmpcXoOIHJ4QxqcrMhZfEikc2j4E0T8fGrAVvuVeUANmLKCMRPnz/NV/4kj4X+5dvZZUVJ0Rc/VUMh8iqdGAXa/GIYhOB8GC+CHXfyIFDCae8yOjCSIV/bfHudEscjc6gtv98+FvfSOk2dRdrCWBzQaI5TXBBh/GTn4rvIoj8Y0dQ8g0Zz8FuBBRUwrfLdVFnt8I68aC9VIxrVMD1XjONQs/h2BKVscNpTbNGvCti/kK4WZNxfhZ4CeTm/k3RD0=" # encrypted value of your token
+
+script:
+  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=labadi0_learnTravisCi
+
+services:
+  - mysql
+before_install:
+  - chmod +x mvnw
+  - mysql -e 'CREATE DATABASE IF NOT EXISTS bankRest;'
+  - mysql -u root --default-character-set=utf8 bankRest < scripts/bd.sql
+  - mysql -e 'SHOW TABLES FROM bankRest;'
+
+notifications:
+  email:
+    recipients:
+      - mouchakess1230@gmail.com
+    on_success: always
+    on_failure: always
