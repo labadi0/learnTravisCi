@@ -2,16 +2,12 @@ language: java
 jdk:
   - openjdk8
 
-
-travis encrypt ae5863c1483f681cf31639a2e9e3fbd527a786b6
-
-
 script: ./mvnw clean install
 
 services:
   - mysql
 before_install:
-  - chmod +x mvnw  
+  - chmod +x mvnw
   - mysql -e 'CREATE DATABASE IF NOT EXISTS bankRest;'
   - mysql -u root --default-character-set=utf8 bankRest < scripts/bd.sql
   - mysql -e 'SHOW TABLES FROM bankRest;'
