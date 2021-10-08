@@ -8,7 +8,9 @@ addons:
 
 script:
   # JaCoCo is used to have code coverage, "-Pcoverage" activates the maven profile in the pom.xml
-  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=labadi0_learnTravisCi
+  #- mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=labadi0_learnTravisCi
+  - mvn clean install
+  - mvn sonar:sonar
 
 services:
   - mysql
