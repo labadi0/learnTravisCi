@@ -4,7 +4,7 @@ jdk:
 
 branches:
   only:
-    - master
+    - main
 
 addons:
   sonarcloud:
@@ -15,7 +15,7 @@ script:
   #- mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar -Dsonar.projectKey=labadi0_learnTravisCi
   #- mvn clean verify sonar:sonar -Pcoverage -Dsonar.projectKey=labadi0_learnTravisCi
   - mvn clean install
-  - mvn sonar:sonar -Dsonar.coverage.jacoco.xmlReportPaths=$(find "$(pwd)" -path '*jacoco.xml' | sed 's/.*/&/' | tr '\n' ',').projectKey=labadi0_learnTravisCi.branch.name=master
+  - mvn sonar:sonar -Dsonar.coverage.jacoco.xmlReportPaths=$(find "$(pwd)" -path '*jacoco.xml' | sed 's/.*/&/' | tr '\n' ',').projectKey=labadi0_learnTravisCi
 
 services:
   - mysql
