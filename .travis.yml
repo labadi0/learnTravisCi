@@ -26,8 +26,9 @@ before_install:
   - mysql -e 'SHOW TABLES FROM bankRest;'
 
 notifications:
-  email:
-    recipients:
-      - mouchakess1230@gmail.com
-    on_success: always
-    on_failure: always
+  webhooks: https://ucergyfr.webhook.office.com/webhookb2/6d50fce8-110e-4aec-9b44-9682736fe040@b8c19512-2aed-471d-a8d1-9b06e7da786a/TravisCI/33d0d3ac872147c28d10108ce474312b/228d3557-0c16-4cf5-890a-70e78465434b
+  #email:
+  #recipients:
+  #- mouchakess1230@gmail.com
+  #on_success: always
+  #on_failure: always
